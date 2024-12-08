@@ -7,6 +7,7 @@ import Title from "./title";
 import { useMobile } from "../context/Mobile";
 import { options } from "../utils";
 import { useRouter } from "next/navigation";
+import FamilyImg from "../icons/FamilyImg";
 
 
 const ContactForm: React.FC = () => {
@@ -59,9 +60,13 @@ const ContactForm: React.FC = () => {
     <div className="mx-auto divide-y sm:divide-y-0 flex flex-col sm:flex-row gap-6 md:gap-20 lg:gap-32">
       <div className="flex justify-center items-center gap-4">
         {isMobile && (<Title />)}
-        <Image
-          src="./family.svg"
-          alt="familia"
+        {/* <FamilyImg
+          width={isMobile ? 136 : 480}
+          height={isMobile ? 160 : 560}
+        /> */}
+        <Image 
+        src={'/family.svg'}
+          alt="family"
           width={isMobile ? 136 : 480}
           height={isMobile ? 160 : 560}
           priority
