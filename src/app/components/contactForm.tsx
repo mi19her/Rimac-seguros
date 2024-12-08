@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
       <div className="flex justify-center items-center gap-4">
         {isMobile && (<Title />)}
         <Image
-          src="/Family.svg"
+          src="./family.svg"
           alt="familia"
           width={isMobile ? 136 : 480}
           height={isMobile ? 160 : 560}
