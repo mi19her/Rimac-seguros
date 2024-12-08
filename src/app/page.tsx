@@ -6,7 +6,7 @@ import Footer from "./components/footer";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { MobileProvider } from "./context/Mobile";
-import './styles.css';
+import "@/app/styles.css";
 
 const Inicio: React.FC = () => {
   return (

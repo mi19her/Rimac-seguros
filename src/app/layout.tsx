@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "./styles.css";
+import "@/app/styles.css";
 
 export const metadata: Metadata = {
   title: "Rimac",
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href={`${process.env.NODE_ENV === 'production' ? '/Rimac-seguros' : ''}/styles.css`} />
+        {/* <link rel="stylesheet" href={`${process.env.NODE_ENV === 'production' ? '' : ''}/styles.css`} /> */}
       </head>
       <body className={lato.className}>
         {children}
