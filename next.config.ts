@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
     basePath: isProd?'/Rimac-seguros':'', 
     assetPrefix: isProd?'/Rimac-seguros/': '',
     output: 'export',
+    webpack(config) {
+      config.output.publicPath = '/Rimac-seguros/_next/static/';
+      return config;
+    },
 };
 
 export default nextConfig;
