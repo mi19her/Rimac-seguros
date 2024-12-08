@@ -2,7 +2,7 @@ import React from "react";
 import { useTexts } from "../context/Texts";
 
 const Title =() => {
-    const { t } = useTexts();
+    const { t } = useTexts() || { t: {} };
     return (
         <div className="grid gap-4">
             <p className='text-[12px] text-center font-bold w-[140px] bg-custom-gradient'>{t.form.caption}</p>

@@ -10,11 +10,11 @@ import { useRouter } from "next/navigation";
 
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState({ id: "", phone: "", type: "" });
+  const [formData, setFormData] = useState({ id: "", phone: "" });
   const [errors, setErrors] = useState<{ id?: string; phone?: string }>({});
   const router = useRouter();
-  const { t } = useTexts();
-  const { isMobile } = useMobile();
+  const { t } = useTexts() || { t: {} };
+  const { isMobile } = useMobile() || { isMobile: false };
 
   const handleSelectChange = (value: string) => {
     setFormData((prev) => ({ ...prev, type: value }));
@@ -69,9 +69,9 @@ const ContactForm: React.FC = () => {
       </div>
       <form onSubmit={handleSubmit} className='pt-6 lg:w-[352px]'>
         {!isMobile && (<Title />)}
-        <h3 className='mb-4 text-sm'>{t.form.subtitle}</h3>
+        <h3 className='mb-4 text-sm'>{t.form?.subtitle}</h3>
         <div className="mb-4 grid grid-cols-2 border border-gray-300 rounded-lg divide-x">
-          <Select options={options} onChange={handleSelectChange} value={formData.type}></Select>
+          <Select options={options} onChange={handleSelectChange}></Select>
           <input
             className='w-full p-2 rounded-r-lg focus:outline-none focus:ring focus:border-purple-400'
             type="number"

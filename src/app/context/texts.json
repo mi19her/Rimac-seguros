@@ -9,11 +9,6 @@
         "privacy": "Acepto lo Política de Privacidad",
         "trades":"Acepto la Política Comunicaciones Comerciales",
         "terms":"Aplican Términos y Condiciones.",
-        "submit": "Cotiza aquí",
-        "submitted":"Cotizando"
-    },
-    "plans":{
-        "title":"{{name}} ¿Para quién deseas cotizar?",
-        "subtitle":"Selecciona la opción que se ajuste más a tus necesidades."
+        "submit": "Cotiza aquí"
     }
 }

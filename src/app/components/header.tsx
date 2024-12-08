@@ -1,13 +1,12 @@
 'use client';
 
 import React from "react";
-import Image from "next/image";
 import PhoneIcon from "../icons/PhoneIcon";
 import LogoIcon from "../icons/LogoIcon";
 import { useTexts } from "../context/Texts";
 
 const Header: React.FC = () => {
-    const { t } = useTexts();
+    const { t } = useTexts() || { t: {} };
     return (
         <header className="col-start-1 col-span-4 flex justify-between p-[24px] md:px-[120px]">
             <LogoIcon

@@ -1,15 +1,47 @@
 'use client';
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import DataText from "./texts.json"
+import React, { createContext, useContext, ReactNode } from "react";
 
-const TextContext = createContext<{ t: Record<string, string>; setTexts: React.Dispatch<React.SetStateAction<Record<string, string>>> } | undefined>(undefined);
+interface TextContextType {
+  t: {
+    title: string,
+    phone: string,
+    footer: string,
+    form: {
+      caption: string,
+      title: string,
+      subtitle: string;
+      submit: string;
+      privacy: string;
+      trades: string;
+      terms: string;
+    };
+  };
+}
 
-const TextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [t, setTexts] = useState<Record<string, string>>(DataText);
-
-  return <TextContext.Provider value={{t, setTexts }}>{children}</TextContext.Provider>;
+const defaultTexts: TextContextType = {
+  t: {
+    title: "¡Compra por este medio!",
+    phone: "(01) 4116001",
+    footer: "© 2023 RIMAC Seguros y Reaseguros.",
+    form: {
+      caption:"Seguro Salud Flexible",
+      title:"Creado para ti y tu familia",
+      subtitle: "Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.",
+      privacy: "Acepto lo Política de Privacidad",
+      trades: "Acepto la Política Comunicaciones Comerciales",
+      terms: "Aplican Términos y Condiciones.",
+      submit: "Cotiza aquí",
+    }
+  },
 };
 
-const useTexts = () => useContext(TextContext);
+const TextContext = createContext<TextContextType>(defaultTexts);
 
-export { TextProvider, useTexts}
+export const TextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const texts = defaultTexts; 
+  return <TextContext.Provider value={texts}>{children}</TextContext.Provider>;
+};
+
+export const useTexts = () => {
+  return useContext(TextContext);
+};
