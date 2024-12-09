@@ -64,8 +64,8 @@ const ContactForm: React.FC = () => {
           width={isMobile ? 136 : 480}
           height={isMobile ? 160 : 560}
         /> */}
-        <Image 
-        src={'/family.svg'}
+        <Image
+          src={'/family.svg'}
           alt="family"
           width={isMobile ? 136 : 480}
           height={isMobile ? 160 : 560}
