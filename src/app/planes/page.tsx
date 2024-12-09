@@ -1,6 +1,5 @@
 'use client'
 import Header from "../components/header";
-import ContactForm from "../components/contactForm";
 import { TextProvider } from "../context/Texts";
 import Footer from "../components/footer";
 import { Provider } from "react-redux";
@@ -14,10 +13,11 @@ const Planes: React.FC = () => {
         <Provider store={store}>
             <TextProvider>
                 <MobileProvider>
-                    <div style={{ backgroundImage: "url(./blur-left.svg), url(./blur-right.svg)", backgroundPosition: "left, right", backgroundSize: "30%, 30%" }}
-                        className="grid grid-cols-4 bg-local bg-no-repeat">
-                        <Header />
-                        <MainPlans/>
+                    <div className="min-h-screen">
+                        <div className="grid grid-cols-4 w-full">
+                            <Header />
+                            <MainPlans />
+                        </div>
                         <Footer />
                     </div>
                 </MobileProvider>

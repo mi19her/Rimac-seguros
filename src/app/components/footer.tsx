@@ -7,7 +7,7 @@ import { useTexts } from "../context/Texts";
 const Footer: React.FC = () => {
     const { t } = useTexts() || { t: {} };
     return (
-        <footer className="col-start-1 col-span-4 grid-flow-col bg-black w-full flex flex-col sm:flex-row items-center justify-center h-[152px] sm:h-[106px] gap-8 divide-y sm:divide-y-0 sm:px-8 md:px-[120px]">
+        <footer className="col-start-1 col-span-4 grid-flow-col bg-black w-full flex flex-col sm:flex-row items-center justify-center h-[152px] sm:h-[106px] gap-8 divide-y sm:divide-y-0 sm:px-8 lg:px-[120px] md:px-[50px]">
             <LogoFooterIcon
                 width={138}
                 height={20}

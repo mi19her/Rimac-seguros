@@ -13,14 +13,16 @@ const Inicio: React.FC = () => {
     <Provider store={store}>
       <TextProvider>
         <MobileProvider>
-        <div style={{ backgroundImage: "url(./blur-left.svg), url(./blur-right.svg)", backgroundPosition: "left, right", backgroundSize:"30%, 30%" }}
-          className="grid grid-cols-4 bg-local bg-no-repeat">
-          <Header />
-          <main className="col-start-1 col-span-4 grid-flow-col px-[24px] md:px-[120px] ">
-            <ContactForm />
-          </main>
-          <Footer />
-        </div>
+          <div className="min-h-screen">
+            <div style={{ backgroundImage: "url(./blur-left.svg), url(./blur-right.svg)", backgroundPosition: "left, right", backgroundSize: "30%, 30%" }}
+              className="grid grid-cols-4 bg-local bg-no-repeat w-full">
+              <Header />
+              <main className="col-start-1 col-span-4 grid-flow-col px-[24px] lg:px-[120px] md:px-[50px] ">
+                <ContactForm />
+              </main>
+            </div>
+            <Footer />
+          </div>
         </MobileProvider>
       </TextProvider>
     </Provider>

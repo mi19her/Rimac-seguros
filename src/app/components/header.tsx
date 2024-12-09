@@ -8,7 +8,7 @@ import { useTexts } from "../context/Texts";
 const Header: React.FC = () => {
     const { t } = useTexts() || { t: {} };
     return (
-        <header className="col-start-1 col-span-4 flex justify-between p-[24px] md:px-[120px]">
+        <header className="col-start-1 col-span-4 flex justify-between p-[24px] lg:px-[120px] md:px-[50px]">
             <LogoIcon
                 width={100}
                 height={40}

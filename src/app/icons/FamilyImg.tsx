@@ -11,9 +11,10 @@ const FamilyImg: React.FC<FamilyImgProps> = ({ width, height, className }) => {
         <svg
             width={width}
             height={height}
-            viewBox={`"0 0 136 160"`}
+            viewBox="0 0 480 560"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="xMidYMid meet"
             className={className}
         >
             <mask id="mask0_12_155796" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="480" height="560">

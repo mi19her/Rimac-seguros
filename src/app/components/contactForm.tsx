@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 import Select from './select';
 import { useTexts } from '../context/Texts';
-import Image from "next/image";
-import Title from "./title";
 import { useMobile } from "../context/Mobile";
-import { options } from "../utils";
+import Title from "./title";
+import { options, validateField } from "../utils";
 import { useRouter } from "next/navigation";
 import FamilyImg from "../icons/FamilyImg";
 
@@ -16,40 +15,26 @@ const ContactForm: React.FC = () => {
   const router = useRouter();
   const { t } = useTexts() || { t: {} };
   const { isMobile } = useMobile() || { isMobile: false };
+  let isDisabled = ((errors.id === '' && errors.phone === '') ? false : true);
 
   const handleSelectChange = (value: string) => {
     setFormData((prev) => ({ ...prev, type: value }));
   };
 
-  const validateField = (name: string, value: string) => {
-    let error = "";
-    if (name === "id" && value.length !== 8) {
-      error = "Debe tener exactamente 8 caracteres.";
-    }
-    if (name === "phone" && value.length !== 9) {
-      error = "El número debe tener exactamente 9 dígitos.";
-    }
-    setErrors((prev) => ({ ...prev, [name]: error }));
-    return error === "";
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    validateField(name, value);
+    validateField(name, value, setErrors);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (errors.id === '' && errors.phone === '') {
-      validateField("id", formData.id);
-      validateField("phone", formData.phone);
+      validateField("id", formData.id, setErrors);
+      validateField("phone", formData.phone, setErrors);
 
       router.push("/planes");
-
-      alert("Formulario enviado correctamente.");
-      console.log("Datos enviados:", formData);
     } else {
       console.log("Errores en el formulario:", errors);
     }
@@ -60,16 +45,10 @@ const ContactForm: React.FC = () => {
     <div className="mx-auto divide-y sm:divide-y-0 flex flex-col sm:flex-row gap-6 md:gap-20 lg:gap-32">
       <div className="flex justify-center items-center gap-4">
         {isMobile && (<Title />)}
-        {/* <FamilyImg
+        <FamilyImg
           width={isMobile ? 136 : 480}
           height={isMobile ? 160 : 560}
-        /> */}
-        <Image
-          src={'/family.svg'}
-          alt="family"
-          width={isMobile ? 136 : 480}
-          height={isMobile ? 160 : 560}
-          priority
+          className="h-full pb-4 md:w-[300px] md:h-[380px]"
         />
       </div>
       <form onSubmit={handleSubmit} className='pt-6 lg:w-[352px]'>
@@ -114,7 +93,7 @@ const ContactForm: React.FC = () => {
         <button
           className={"my-12 w-full p-2 bg-black text-white rounded-lg focus:outline-none focus:ring focus:border-purple-400 "}
           type="submit"
-          disabled={(errors.id === '' && errors.phone === '') ? false : true}
+          disabled={isDisabled}
         >
           {t.form.submit}
         </button>
